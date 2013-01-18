@@ -21,4 +21,20 @@ make samples
 #set up service
 cp contrib/init.d/rc.debian.asterisk /etc/init.d/asterisk
 sed -e 's/__ASTERISK_SBIN_DIR__/\/usr\/sbin/g' -e 's/__ASTERISK_VARRUN_DIR__/\/var\/run\/asterisk\//g' -e 's/__ASTERISK_ETC_DIR__/\/etc\/asterisk\//g' -i /etc/init.d/asterisk
+#prep asterisk for multiple users
+touch /etc/asterisk/userconf_extensions.conf
+echo "#include /etc/asterisk/userconf_extensions.conf" >> /etc/asterisk/extensions.conf
+touch /etc/asterisk/userconf_sip.conf
+echo "#include /etc/asterisk/userconf_sip.conf" >> /etc/asterisk/sip.conf
+touch /etc/asterisk/userconf_iax.conf
+echo "#include /etc/asterisk/userconf_iax.conf" >> /etc/asterisk/iax.conf
+touch /etc/asterisk/userconf_voicemail.conf
+echo "#include /etc/asterisk/userconf_voicemail.conf" >> /etc/asterisk/voicemail.conf
+touch /etc/asterisk/userconf_musiconhold.conf
+echo "#include /etc/asterisk/userconf_musiconhold.conf" >> /etc/asterisk/musiconhold.conf
+asterisk -rx "module reload"
+chmod 777 /var/spool/asterisk/outgoing
+sed -e 's/;\[files\]/\[files\]/g' -i /etc/asterisk/asterisk.conf
+sed -e 's/;astctlpermissions = 0660/astctlpermissions = 0770/g' -i /etc/asterisk/asterisk.conf 
+sed -e 's/;astctlgroup = apache/astctlgroup = asterisk/g' -i /etc/asterisk/asterisk.conf
 service asterisk start
