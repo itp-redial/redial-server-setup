@@ -17,6 +17,9 @@ useradd -d /home/$NETID $NETID -m
 echo -e "$PASSWORD\n$PASSWORD" | (passwd $NETID)
 #expire password on next user login
 passwd -e
+#add user to necessary groups
+usermod -a -G users $NETID
+usermod -a -G asterisk $NETID
 
 # set up folders for html and sinatra
 
