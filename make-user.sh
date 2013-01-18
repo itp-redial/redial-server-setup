@@ -13,8 +13,10 @@ fi
 
 NETID=$1
 # Make the user.
-useradd -d /home/$NETID $NETID -m -p $PASSWORD
-chage -d 0 $NETID
+useradd -d /home/$NETID $NETID -m
+echo -e "$PASSWORD\n$PASSWORD" | (passwd $NETID)
+#expire password on next user login
+passwd -e
 
 # set up folders for html and sinatra
 
