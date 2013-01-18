@@ -5,9 +5,17 @@ if [ -z $1 ]; then
  echo "You must include a user ID as the first agruement.  Example: ./make-user chrisk"
  exit 1
 fi
+PASSWORD=$2
+if [ -z $2 ]; then
+ echo "no password was set for second arguement, so I'm setting default to 'redial2013'"
+ PASSWORD=redial2013
+fi
+
 NETID=$1
 # Make the user.
-useradd -d /home/$NETID $NETID -m
+useradd -d /home/$NETID $NETID -m -p $PASSWORD
+chage -d 0 $NETID
+
 # set up folders for html and sinatra
 
 HOME_PATH="/home/$NETID"
@@ -33,4 +41,5 @@ chmod 755 $HOME_PATH/new_sinatra_app.rb
 #add gencallfile.rb script
 #add mailer script
  
-echo "$NETID is set up!"
+echo "$NETID is set up!  Their password is $PASSWORD.  They are forced to change it when they log in for the first time."
+
