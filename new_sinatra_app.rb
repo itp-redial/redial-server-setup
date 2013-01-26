@@ -14,7 +14,7 @@ if !ARGV[0]
   exit 1
 end
 
-app_name = ARGV[0]
+app_name = ARGV[0].dup
 app_name.gsub!(" ", "_")
 
 puts "Creating new app: #{app_name}..."
