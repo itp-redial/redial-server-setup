@@ -42,6 +42,16 @@ cp /root/scripts/new_sinatra_app.rb $HOME_PATH/new_sinatra_app.rb
 chown $NETID $HOME_PATH/new_sinatra_app.rb
 chmod 755 $HOME_PATH/new_sinatra_app.rb
 
+chown -R $NETID $HOME_PATH
+
+#add mysql access
+tr -dc "[:lower:]" < /dev/urandom | head -c 8 > $HOME_PATH/sqlpwd
+chown $NETID $HOME_PATH/sqlpwd
+chmod 600 $HOME_PATH/sqlpwd
+MYSQL_PWD=`cat $HOME_PATH/sqlpwd`
+/root/scripts/new-mysql-user.sh $NETID $NETID $MYSQL_PWD
+echo "MySQL Password for $NETID is $MYSQL_PWD"
+
 #add scripts directory
 #add gencallfile.rb script
 #add mailer script
