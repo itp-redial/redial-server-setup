@@ -1,5 +1,5 @@
 apt-get update
-apt-get -y install build-essential wget libssl-dev libncurses5-dev libnewt-dev libxml2-dev inux-headers-$(uname -r) libsqlite3-dev
+apt-get -y install build-essential wget libssl-dev libncurses5-dev libnewt-dev libxml2-dev linux-headers-$(uname -r) libsqlite3-dev
 apt-get -y install git-core subversion
 apt-get -y install mysql-server mysql-client libmysql-ruby libmysqlclient-dev
 apt-get -y install libiksemel-dev
