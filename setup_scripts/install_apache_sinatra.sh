@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+export DEBIAN_FRONTEND=noninteractive
 
 #install http server
 apt-get -y install apache2
