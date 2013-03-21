@@ -2,7 +2,9 @@
 
 export DEBIAN_FRONTEND=noninteractive
 apt-get -y install python-software-properties python g++ make
-yes | add-apt-repository ppa:chris-lea/node.js
+#yes | add-apt-repository ppa:chris-lea/node.js
+#install node 0.8.x, not 0.10.x
+yes | add-apt-repository ppa:chris-lea/node.js-legacy
 apt-get update
 apt-get -y install nodejs
 #apt-get -y install npm
