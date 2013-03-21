@@ -5,6 +5,7 @@ apt-get update
 apt-get -y upgrade
 apt-get -y install build-essential wget libssl-dev libncurses5-dev libnewt-dev libxml2-dev linux-headers-$(uname -r)
 apt-get -y install git-core subversion
+apt-get -y install xml2
 
 #set timezone
 ln -sf /usr/share/zoneinfo/US/Eastern /etc/localtime
