@@ -2,6 +2,7 @@
 
 #install http server
 apt-get -y install apache2
+apt-get -y install php5
 wget http://www.itp-redial.com/class/wp-content/uploads/2012/03/httpd.conf_.txt -O /etc/apache2/httpd.conf
 #cp /usr/share/doc/apache2.2-common/examples/apache2/extra/httpd-userdir.conf /etc/apache2/httpd.conf
 a2enmod userdir
