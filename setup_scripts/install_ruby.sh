@@ -14,3 +14,4 @@ rvm rubygems current
 rvm use 1.9.3 --default
 # create symbolic link to /usr/bin/ruby for legacy compatibility
 ln -s `which ruby` /usr/bin/ruby
+source /etc/profile.d/rvm.sh
