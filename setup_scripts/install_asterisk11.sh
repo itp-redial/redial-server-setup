@@ -41,6 +41,8 @@ sed -e 's/;\[files\]/\[files\]/g' -i /etc/asterisk/asterisk.conf
 sed -e 's/;astctlpermissions = 0660/astctlpermissions = 0770/g' -i /etc/asterisk/asterisk.conf 
 sed -e 's/;astctlgroup = apache/astctlgroup = asterisk/g' -i /etc/asterisk/asterisk.conf
 service asterisk start
+#install redial ruby gem
+gem install redial-ruby-agi
 chmod 777 /var/spool/asterisk/outgoing
 AST_ON=`asterisk -rx 'core show calls'`
 if [ -n "$AST_ON" ];then echo "Asterisk is running."; fi
