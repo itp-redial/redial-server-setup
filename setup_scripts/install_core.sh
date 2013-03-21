@@ -18,6 +18,7 @@ echo $PUBLIC_IP > /etc/publicIP
 #install scripts from git
 cd /root
 git clone https://github.com/itp-redial/redial-server-setup.git
+ln -s /root/redial-server-setup/operational_scripts /root/scripts
 echo "Rebooting your computer... Please wait 5 minutes for reboot to complete" 
 sleep 5
 reboot
