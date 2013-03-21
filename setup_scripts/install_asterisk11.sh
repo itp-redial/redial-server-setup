@@ -42,4 +42,6 @@ sed -e 's/;astctlpermissions = 0660/astctlpermissions = 0770/g' -i /etc/asterisk
 sed -e 's/;astctlgroup = apache/astctlgroup = asterisk/g' -i /etc/asterisk/asterisk.conf
 service asterisk start
 chmod 777 /var/spool/asterisk/outgoing
-
+AST_ON=`asterisk -rx 'core show calls'`
+if [ -n "$AST_ON" ];then echo "Asterisk is running."; fi
+if [ -z "$AST_ON" ];then echo "Asterisk is NOT running.  Something seems to have gone wrong with the install."; fi
