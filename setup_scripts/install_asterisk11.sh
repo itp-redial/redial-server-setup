@@ -36,11 +36,12 @@ touch /etc/asterisk/userconf_voicemail.conf
 echo "#include /etc/asterisk/userconf_voicemail.conf" >> /etc/asterisk/voicemail.conf
 touch /etc/asterisk/userconf_musiconhold.conf
 echo "#include /etc/asterisk/userconf_musiconhold.conf" >> /etc/asterisk/musiconhold.conf
-asterisk -rx "module reload"
 sed -e 's/;\[files\]/\[files\]/g' -i /etc/asterisk/asterisk.conf
 sed -e 's/;astctlpermissions = 0660/astctlpermissions = 0770/g' -i /etc/asterisk/asterisk.conf 
 sed -e 's/;astctlgroup = apache/astctlgroup = asterisk/g' -i /etc/asterisk/asterisk.conf
 service asterisk start
+sleep 3
+asterisk -rx "module reload"
 #install redial ruby gem
 gem install redial-ruby-agi
 chmod 777 /var/spool/asterisk/outgoing
