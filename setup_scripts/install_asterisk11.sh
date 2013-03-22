@@ -12,7 +12,7 @@ apt-get -y install libgmime-2.6-dev
 apt-get -y install libsrtp-dev
 apt-get -y install curl libcurl4-openssl-dev
 #if you want to send email from asterisk...
-apt-get -y install sendmail
+#apt-get -y install sendmail
 wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-11-current.tar.gz
 tar -xzf asterisk-11-current.tar.gz
 cd asterisk-11*
