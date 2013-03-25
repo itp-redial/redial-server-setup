@@ -4,6 +4,7 @@ npm install -g sm
 git clone https://github.com/ajaxorg/cloud9.git cloud9
 cd cloud9
 sm install
+sleep 2
 cat << EOF
 ***********************
 Run Cloud9 at least once like this (change the username and password):
