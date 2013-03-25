@@ -10,6 +10,9 @@ wget http://www.itp-redial.com/class/wp-content/uploads/2012/03/httpd.conf_.txt 
 a2enmod userdir
 service apache2 restart
 
+#just in case this is run right after RVM install...
+source /etc/profile.d/rvm.sh
+
 #install sinatra
 gem install sinatra
 gem install haml
