@@ -39,6 +39,7 @@ echo "#include /etc/asterisk/userconf_musiconhold.conf" >> /etc/asterisk/musicon
 sed -e 's/;\[files\]/\[files\]/g' -i /etc/asterisk/asterisk.conf
 sed -e 's/;astctlpermissions = 0660/astctlpermissions = 0770/g' -i /etc/asterisk/asterisk.conf 
 sed -e 's/;astctlgroup = apache/astctlgroup = asterisk/g' -i /etc/asterisk/asterisk.conf
+sed -e 's/;verbose/verbose/g' -i /etc/asterisk/asterisk.conf
 service asterisk start
 sleep 3
 asterisk -rx "module reload"
