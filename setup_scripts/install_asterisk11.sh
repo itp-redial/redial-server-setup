@@ -4,7 +4,9 @@ export DEBIAN_FRONTEND=noninteractive
 #make asterisk group
 groupadd asterisk
 apt-get update
-apt-get -y install build-essential wget libssl-dev libncurses5-dev libnewt-dev libxml2-dev linux-headers-$(uname -r) libsqlite3-dev
+apt-get -y install build-essential wget libssl-dev libncurses5-dev libnewt-dev libxml2-dev
+apt-get -y install linux-headers-$(uname -r)
+apt-get -y install libsqlite3-dev
 apt-get -y install git-core subversion
 apt-get -y install libiksemel-dev
 apt-get -y install speex libspeex-dev libspeexdsp-dev libvorbis-dev libssl-dev sox openssl mpg123 libmpg123-0
