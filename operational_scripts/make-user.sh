@@ -8,7 +8,7 @@ fi
 PASSWORD=$2
 if [ -z $2 ]; then
  echo "no password was set for second arguement, so I'm setting default to 'redial2013'"
- PASSWORD=redial2013
+ PASSWORD=redial2014
 fi
 
 NETID=$1
