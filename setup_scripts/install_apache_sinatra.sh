@@ -14,8 +14,8 @@ service apache2 restart
 source /etc/profile.d/rvm.sh
 
 #install sinatra
-gem install sinatra
-gem install haml
+gem install sinatra --no-ri --no-rdoc
+gem install haml --no-ri --no-rdoc
 
 #install passenger so sinatra can be run in apache
 apt-get -y install libcurl4-openssl-dev
