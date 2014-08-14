@@ -20,6 +20,8 @@ passwd -e $NETID
 #add user to necessary groups
 usermod -a -G users $NETID
 usermod -a -G asterisk $NETID
+#make sure user's default shell is bash
+usermod -s /bin/bash $NETID
 
 # set up folders for html and sinatra
 
@@ -33,6 +35,7 @@ fi
 #add html directories
 mkdir -p $HOME_PATH/public_html
 mkdir -p $HOME_PATH/sinatra
+mkdir -p $HOME_PATH/node
 
 #add Asterisk files for user
 /root/scripts/make-ast-user.sh $NETID
