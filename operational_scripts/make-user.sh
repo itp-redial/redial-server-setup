@@ -45,6 +45,11 @@ cp /root/scripts/new_sinatra_app.rb $HOME_PATH/new_sinatra_app.rb
 chown $NETID $HOME_PATH/new_sinatra_app.rb
 chmod 755 $HOME_PATH/new_sinatra_app.rb
 
+#add node app creater script to user directory
+cp /root/scripts/new_node_app.rb $HOME_PATH/new_node_app.rb
+chown $NETID $HOME_PATH/new_node_app.rb
+chmod 755 $HOME_PATH/new_node_app.rb
+
 chown -R $NETID $HOME_PATH
 
 #add mysql access
