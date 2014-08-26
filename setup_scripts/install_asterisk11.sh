@@ -48,6 +48,7 @@ service asterisk start
 sleep 3
 asterisk -rx "module reload"
 #install redial ruby gem
+source /etc/profile
 gem install redial-ruby-agi
 chmod 777 /var/spool/asterisk/outgoing
 AST_ON=`asterisk -rx 'core show calls'`
