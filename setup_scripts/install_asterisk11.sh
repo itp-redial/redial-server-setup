@@ -13,7 +13,7 @@ apt-get -y install speex libspeex-dev libspeexdsp-dev libvorbis-dev libssl-dev s
 apt-get -y install liblua5.1-dev lua5.1
 apt-get -y install libneon27-dev libical-dev
 apt-get -y install libgmime-2.6-dev
-apt-get -y install libsrtp-dev
+apt-get -y install libsrtp0-dev uuid-dev
 apt-get -y install curl libcurl4-openssl-dev
 #if you want to send email from asterisk...
 #apt-get -y install sendmail
@@ -21,6 +21,8 @@ wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-11-current.ta
 tar -xzf asterisk-11-current.tar.gz
 cd asterisk-11*
 contrib/scripts/get_mp3_source.sh
+contrib/scripts/install_prereq install
+contrib/scripts/install_prereq install-unpackaged
 ./configure
 # make menuselect
 make
@@ -29,6 +31,12 @@ make samples
 #set up service
 cp contrib/init.d/rc.debian.asterisk /etc/init.d/asterisk
 sed -e 's/__ASTERISK_SBIN_DIR__/\/usr\/sbin/g' -e 's/__ASTERISK_VARRUN_DIR__/\/var\/run\/asterisk\//g' -e 's/__ASTERISK_ETC_DIR__/\/etc\/asterisk\//g' -i /etc/init.d/asterisk
+#set up websockets for webrtc
+sed -e 's/;enabled/enabled/g' -i /etc/asterisk/http.conf
+sed -e 's/;bindport/bindport/g' -i /etc/asterisk/http.conf
+sed -e 's/;\Wicesupport/icesupport/g' -i /etc/asterisk/rtp.conf
+sed -e 's/;\Wstunaddr=/stunaddr=stun.l.google.com:19302/g' -i /etc/asterisk/rtp.conf
+ed -e 's/transport=udp/transport=udp,ws/g' -i /etc/asterisk/sip.conf
 #prep asterisk for multiple users
 touch /etc/asterisk/userconf_extensions.conf
 echo "#include /etc/asterisk/userconf_extensions.conf" >> /etc/asterisk/extensions.conf
