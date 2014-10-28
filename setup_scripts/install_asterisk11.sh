@@ -31,6 +31,8 @@ make samples
 #set up service
 cp contrib/init.d/rc.debian.asterisk /etc/init.d/asterisk
 sed -e 's/__ASTERISK_SBIN_DIR__/\/usr\/sbin/g' -e 's/__ASTERISK_VARRUN_DIR__/\/var\/run\/asterisk\//g' -e 's/__ASTERISK_ETC_DIR__/\/etc\/asterisk\//g' -i /etc/init.d/asterisk
+sed -e 's/\/bin\/sh/\/bin\/bash/g' -i /etc/init.d/asterisk
+sed -e 's/set -e/set -e\nsource \/etc\/profile/g' -i /etc/init.d/asterisk
 #set up websockets for webrtc
 sed -e 's/;enabled/enabled/g' -i /etc/asterisk/http.conf
 sed -e 's/;bindport/bindport/g' -i /etc/asterisk/http.conf
