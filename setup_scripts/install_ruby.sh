@@ -3,6 +3,7 @@
 #get yaml libs
 apt-get -y install libyaml-dev
 #install ruby rvm
+gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3
 \curl -L https://get.rvm.io | sudo bash -s stable --autolibs=enabled
 source /etc/profile.d/rvm.sh
 rvm install 2.0.0
